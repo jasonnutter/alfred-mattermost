@@ -1,0 +1,30 @@
+{
+  "name": "alfred-mattermost",
+  "version": "1.0.0",
+  "description": "Alfred workflow for Mattermost chat servers",
+  "license": "MIT",
+  "repository": "jasonnutter/alfred-mattermost",
+  "author": {
+    "name": "Jason Nutter",
+    "email": "jasondnutter@gmail.com",
+    "url": "https://github.com/jasonnutter/alfred-newrelic"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup"
+  },
+  "keywords": [
+    "alfred",
+    "workflow",
+    "alfy"
+  ],
+  "dependencies": {
+    "alfy": "^0.6.0"
+  },
+  "devDependencies": {
+    "alfy-test": "^0.3.0"
+  }
+}

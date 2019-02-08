@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.jasonnutter.mattermost</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>0AF34700-F3B4-4C9F-9219-D65BD5EB3D15</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C4C9730E-D6AC-42F7-9EEF-2C67F3279F10</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6A922EAC-0741-45BE-9276-78000BA74154</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F024E5B-1132-443F-AA45-59EE9DB4E2F9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A1B8211F-CB0E-48DB-95D0-143AF5F58222</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EB4ADD34-66E3-4018-A3EF-23991878E4BD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jason Nutter</string>
+	<key>description</key>
+	<string>Alfred workflow for Mattermost chat servers</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Mattermost</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>mm</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node src/index.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>index.js</string>
+				<key>subtext</key>
+				<string>Search for Mattermost channels &amp; users...</string>
+				<key>title</key>
+				<string>Mattermost</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6A922EAC-0741-45BE-9276-78000BA74154</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>F572314E-54D1-4D2A-A2B2-41F4DE7E1851</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)	set windowIndex to 1		set domain to DNS form of (host of (q as URL))		tell application "Google Chrome"		repeat with theWindow in windows			set tabIndex to 1			repeat with theTab in tabs of theWindow				if domain is in (URL of theTab) then					activate					tell window windowIndex						set active tab index to tabIndex						set index to 1						set URL of theTab to q					end tell					tell application "System Events" to tell process "Google Chrome"						perform action "AXRaise" of window 1					end tell					return				end if				set tabIndex to tabIndex + 1			end repeat			set windowIndex to windowIndex + 1		end repeat		open location q	end tellend alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>7F024E5B-1132-443F-AA45-59EE9DB4E2F9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>mm_domain</string>
+				<key>subtext</key>
+				<string>Configure your Mattermost domain, e.g. https://chat.example.com</string>
+				<key>text</key>
+				<string>Mattermost Domain</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>0AF34700-F3B4-4C9F-9219-D65BD5EB3D15</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node src/domain.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C4C9730E-D6AC-42F7-9EEF-2C67F3279F10</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>mm_token</string>
+				<key>subtext</key>
+				<string>Configure your personal access token</string>
+				<key>text</key>
+				<string>Personal Access Token</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A1B8211F-CB0E-48DB-95D0-143AF5F58222</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node src/token.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>EB4ADD34-66E3-4018-A3EF-23991878E4BD</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>0AF34700-F3B4-4C9F-9219-D65BD5EB3D15</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>320</integer>
+		</dict>
+		<key>6A922EAC-0741-45BE-9276-78000BA74154</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>30</integer>
+		</dict>
+		<key>7F024E5B-1132-443F-AA45-59EE9DB4E2F9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>A1B8211F-CB0E-48DB-95D0-143AF5F58222</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>460</integer>
+		</dict>
+		<key>C4C9730E-D6AC-42F7-9EEF-2C67F3279F10</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>320</integer>
+		</dict>
+		<key>EB4ADD34-66E3-4018-A3EF-23991878E4BD</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>460</integer>
+		</dict>
+		<key>F572314E-54D1-4D2A-A2B2-41F4DE7E1851</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>30</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>0.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/jasonnutter/alfred-mattermost#readme</string>
+</dict>
+</plist>
